@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { SuperheroService } from '../superhero.service';
 import { Superhero } from '../superhero.model';
 
@@ -13,11 +14,13 @@ export class SuperheroCreateComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private superheroService: SuperheroService
+    private superheroService: SuperheroService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     this.superheroForm = this.fb.group({
+      id: ['', Validators.required],
       name: ['', Validators.required],
       ability: ['', Validators.required],
       strength: ['', [Validators.required, Validators.min(0)]]
@@ -33,6 +36,7 @@ export class SuperheroCreateComponent implements OnInit {
         id: this.superheroForm.value.id
       };
       this.superheroService.addSuperhero(superhero);
+      this.router.navigate(['/superheroes']);
     }
   }
 }

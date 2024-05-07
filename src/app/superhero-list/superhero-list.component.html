@@ -1,6 +1,25 @@
-<h2>Superheroes</h2>
-<ul>
-  <li *ngFor="let hero of superheroes">
-    {{ hero.name }} - {{ hero.ability }} - Strength: {{ hero.strength }}
-  </li>
-</ul>
+
+
+  <div class="container">
+    <h2>Superheroes List</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Ability</th>
+          <th>Strength</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let superhero of superheroes">
+          <td>{{ superhero.id }}</td>
+          <td>{{ superhero.name }}</td>
+          <td>{{ superhero.ability }}</td>
+          <td>{{ superhero.strength }}</td>
+          <td><button (click)="deleteSuperhero(superhero.id)">Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
