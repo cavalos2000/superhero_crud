@@ -9,11 +9,27 @@ import { SuperheroService } from '../superhero.service';
 })
 export class SuperheroListComponent implements OnInit {
   superheroes: Superhero[] = [];
+  pagedSuperheroes: any[] = [];
+  pageSize: number = 10;
+  pageIndex: number = 0;
+  totalItems!: number;
 
   constructor(private superheroService: SuperheroService) { }
 
   ngOnInit(): void {
     this.superheroes = this.superheroService.getAllSuperheroes();
+    this.totalItems = this.superheroes.length;
+  }
+
+  updatePage(): void {
+    const startIndex = this.pageIndex * this.pageSize;
+    this.pagedSuperheroes = this.superheroes.slice(startIndex, startIndex + this.pageSize);
+  }
+
+  onPageChange(event: { pageIndex: number; pageSize: number; }): void {
+    this.pageIndex = event.pageIndex;
+    this.pageSize = event.pageSize;
+    this.updatePage();
   }
 
   deleteSuperhero(id: number): void {

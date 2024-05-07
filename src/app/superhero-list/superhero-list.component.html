@@ -1,7 +1,6 @@
-
-
-  <div class="container">
-    <h2>Superheroes List</h2>
+<div class="container">
+  <h2>Superheroes List</h2>
+  <div class="table-wrapper">
     <table class="table">
       <thead>
         <tr>
@@ -23,3 +22,7 @@
       </tbody>
     </table>
   </div>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="pageSize" [pageIndex]="pageIndex"
+                 [length]="totalItems" (page)="onPageChange($event)">
+  </mat-paginator>
+</div>
