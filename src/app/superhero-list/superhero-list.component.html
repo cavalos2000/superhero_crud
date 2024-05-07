@@ -9,6 +9,7 @@
           <th>Ability</th>
           <th>Strength</th>
           <th>Delete</th>
+          <th>View Details</th>
         </tr>
       </thead>
       <tbody>
@@ -18,6 +19,8 @@
           <td>{{ superhero.ability }}</td>
           <td>{{ superhero.strength }}</td>
           <td><button (click)="deleteSuperhero(superhero.id)">Delete</button></td>
+          <td><button class="btn btn-primary" (click)="viewHeroDetail(superhero)">View Details</button></td>
+
         </tr>
       </tbody>
     </table>
