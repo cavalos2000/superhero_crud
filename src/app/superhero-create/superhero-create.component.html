@@ -1,0 +1,17 @@
+
+<form [formGroup]="superheroForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label>Name:</label>
+      <input type="text" formControlName="name">
+    </div>
+    <div>
+      <label>Ability:</label>
+      <input type="text" formControlName="ability">
+    </div>
+    <div>
+      <label>Strength:</label>
+      <input type="number" formControlName="strength">
+    </div>
+    <button type="submit" [disabled]="!superheroForm.valid">Create Superhero</button>
+  </form>
+  
