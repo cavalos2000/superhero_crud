@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Superhero } from '../superhero.model';
 import { SuperheroService } from '../superhero.service';
 import { SuperheroDetailComponent } from '../superhero-detail/superhero-detail.component';
+import { SuperheroEditComponent } from '../superhero-edit/superhero-edit.component';
 
 @Component({
   selector: 'app-superhero-list',
@@ -43,6 +44,17 @@ export class SuperheroListComponent implements OnInit {
     this.dialog.open(SuperheroDetailComponent, {
       width: '400px',
       data: superhero
+    });
+  }
+  editSuperhero(superhero: any): void {
+    const dialogRef = this.dialog.open(SuperheroEditComponent, {
+      width: '500px',
+      data: { ...superhero } // Pass the superhero data to the dialog
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+      // Handle dialog close event
+      console.log('The dialog was closed');
     });
   }
 }

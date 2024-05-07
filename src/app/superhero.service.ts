@@ -5,6 +5,7 @@ import { Superhero } from './superhero.model';
   providedIn: 'root'
 })
 export class SuperheroService {
+
   private superheroes: Superhero[] = [
     { id: 1, name: 'Superman', ability: 'Flight', strength: 100 },
     { id: 2, name: 'Batman', ability: 'Intelligence', strength: 90 },
@@ -34,5 +35,12 @@ export class SuperheroService {
 
   deleteSuperhero(id: number): void {
     this.superheroes = this.superheroes.filter(hero => hero.id !== id);
+  }
+
+  editSuperhero(editedSuperhero: any) {
+    const index = this.superheroes.findIndex(s => s.id === editedSuperhero.id);
+    if (index !== -1) {
+      this.superheroes[index] = editedSuperhero;
+    }
   }
 }

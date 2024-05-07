@@ -8,8 +8,8 @@
           <th>Name</th>
           <th>Ability</th>
           <th>Strength</th>
-          <th>Delete</th>
-          <th>View Details</th>
+          <th>Actions</th>
+          
         </tr>
       </thead>
       <tbody>
@@ -18,8 +18,11 @@
           <td>{{ superhero.name }}</td>
           <td>{{ superhero.ability }}</td>
           <td>{{ superhero.strength }}</td>
-          <td><button (click)="deleteSuperhero(superhero.id)">Delete</button></td>
-          <td><button class="btn btn-primary" (click)="viewHeroDetail(superhero)">View Details</button></td>
+          <td>
+            <button (click)="deleteSuperhero(superhero.id)">Delete</button>
+            <button class="btn btn-primary" (click)="viewHeroDetail(superhero)">View Details</button>
+            <button (click)="editSuperhero(superhero)">Edit</button>
+          </td>
 
         </tr>
       </tbody>

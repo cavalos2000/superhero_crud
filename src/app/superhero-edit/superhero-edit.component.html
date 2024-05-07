@@ -1,0 +1,19 @@
+<div class="container">
+    <h2>Edit Superhero</h2>
+    <form [formGroup]="superheroForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" formControlName="name">
+      </div>
+      <div class="form-group">
+        <label for="ability">Ability:</label>
+        <input type="text" class="form-control" formControlName="ability">
+      </div>
+      <div class="form-group">
+        <label for="strength">Strength:</label>
+        <input type="text" class="form-control" formControlName="strength">
+      </div>
+      <button type="submit" class="btn btn-primary">Modificar</button>
+    </form>
+  </div>
+  

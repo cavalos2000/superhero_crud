@@ -10,13 +10,16 @@ import { SuperheroListComponent } from './superhero-list/superhero-list.componen
 import { SuperheroCreateComponent } from './superhero-create/superhero-create.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SuperheroDetailComponent } from './superhero-detail/superhero-detail.component';
+import { SuperheroEditComponent } from './superhero-edit/superhero-edit.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     SuperheroListComponent,
     SuperheroCreateComponent,
-    SuperheroDetailComponent
+    SuperheroDetailComponent,
+    SuperheroEditComponent,
   ],
   imports: [
     BrowserModule,
