@@ -1,6 +1,16 @@
 <div class="container">
+  
   <h2>Superheroes List</h2>
+  
   <div class="table-wrapper">
+      
+    <div [formGroup]="filterForm" class="form-group">
+      <input type="text" class="form-control" placeholder="Filter by name" formControlName="filter">
+      <button class="btn btn-primary" (click)="filterSuperheroes()">Filter</button>
+      <button class="btn btn-primary" (click)="createSuperhero()">Create</button>
+
+    </div>
+  
     <table class="table">
       <thead>
         <tr>
@@ -13,7 +23,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let superhero of superheroes">
+        <tr *ngFor="let superhero of pagedSuperheroes">
           <td>{{ superhero.id }}</td>
           <td>{{ superhero.name }}</td>
           <td>{{ superhero.ability }}</td>

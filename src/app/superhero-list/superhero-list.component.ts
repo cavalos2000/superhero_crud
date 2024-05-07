@@ -4,6 +4,8 @@ import { Superhero } from '../superhero.model';
 import { SuperheroService } from '../superhero.service';
 import { SuperheroDetailComponent } from '../superhero-detail/superhero-detail.component';
 import { SuperheroEditComponent } from '../superhero-edit/superhero-edit.component';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-superhero-list',
@@ -11,16 +13,27 @@ import { SuperheroEditComponent } from '../superhero-edit/superhero-edit.compone
   styleUrls: ['./superhero-list.component.css']
 })
 export class SuperheroListComponent implements OnInit {
+
   superheroes: Superhero[] = [];
   pagedSuperheroes: any[] = [];
   pageSize: number = 10;
   pageIndex: number = 0;
   totalItems!: number;
+  filterForm: FormGroup = new FormGroup({});
+  searchText: any;
+  
 
-  constructor(private superheroService: SuperheroService, private dialog: MatDialog) { }
+  constructor(private superheroService: SuperheroService,
+     private formBuilder: FormBuilder,
+     private router: Router,
+     private dialog: MatDialog) { }
 
   ngOnInit(): void {
+    this.filterForm = this.formBuilder.group({
+      filter: ['']
+    });
     this.superheroes = this.superheroService.getAllSuperheroes();
+    this.pagedSuperheroes = this.superheroes;
     this.totalItems = this.superheroes.length;
   }
 
@@ -57,4 +70,21 @@ export class SuperheroListComponent implements OnInit {
       console.log('The dialog was closed');
     });
   }
+  filterSuperheroes(): void {
+    const searchText = this.filterForm.get('filter');
+    if (searchText?.value !== '') {
+      console.log("filter")
+      this.pagedSuperheroes = this.pagedSuperheroes.filter(superhero =>
+        superhero.name.includes(searchText?.value)
+      );
+    }
+    else {
+      console.log("update")
+      this.updatePage();
+    }
+  }
+  createSuperhero() {
+    this.router.navigate(['/create']);
+  }
+
 }
